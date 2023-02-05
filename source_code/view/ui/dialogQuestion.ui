@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>313</width>
+    <height>135</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>10</y>
+     <width>211</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family: &quot;Comic Sans MS&quot;;
+font: bold 15px;
+color: white;</string>
+   </property>
+   <property name="text">
+    <string>Aru u wanna continue or 
+start overlearning network?</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="but_start_over">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>70</y>
+     <width>90</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+border-radius: 10px;
+border: 2px solid rgb(126, 44, 61); 
+background-color: black;
+color: gold;
+font-family: &quot;Comic Sans MS&quot;;
+font: 13px;
+}
+
+QPushButton:hover {
+	border: 2px solid black;
+	font: bold 13px;
+	
+}</string>
+   </property>
+   <property name="text">
+    <string>Start Over</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="but_continue">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>70</y>
+     <width>90</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+border-radius: 10px;
+border: 2px solid rgb(126, 44, 61); 
+background-color: black;
+color: gold;
+font-family: &quot;Comic Sans MS&quot;;
+font: 13px;
+}
+
+QPushButton:hover {
+	border: 2px solid black;
+	font: bold 13px;
+	
+}</string>
+   </property>
+   <property name="text">
+    <string>Continue</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
