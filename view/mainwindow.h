@@ -5,7 +5,7 @@
 #include <QKeyEvent>
 #include <QMainWindow>
 
-#include "controller.hpp"
+#include "../controller/controller.hpp"
 #include "learninggraph.h"
 #include "paintscene.h"
 

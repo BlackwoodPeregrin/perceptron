@@ -1,6 +1,6 @@
 #pragma once
 
-#include "network.hpp"
+#include "../model/network.hpp"
 
 namespace s21_network {
 class Controller {

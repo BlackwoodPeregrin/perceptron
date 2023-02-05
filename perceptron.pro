@@ -9,31 +9,31 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    controller.cpp \
-    graphNetwork.cpp \
-    learninggraph.cpp \
+    controller/controller.cpp \
     main.cpp \
-    mainwindow.cpp \
-    matrixNetwork.cpp \
-    network.cpp \
-    neuron.cpp
+    model/graphNetwork.cpp \
+    model/matrixNetwork.cpp \
+    model/network.cpp \
+    model/neuron.cpp \
+    view/learninggraph.cpp \
+    view/mainwindow.cpp
 
 HEADERS += \
-    controller.hpp \
-    graphNetwork.hpp \
-    interfaceNetwork.hpp \
-    learninggraph.h \
-    mainwindow.h \
-    matrixNetwork.hpp \
-    network.hpp \
-    neuron.h \
-    paintscene.h \
-    s21_matrix_oop.h
+    controller/controller.hpp \
+    model/graphNetwork.hpp \
+    model/interfaceNetwork.hpp \
+    model/matrixNetwork.hpp \
+    model/network.hpp \
+    model/neuron.h \
+    model/s21_matrix_oop.h \
+    view/learninggraph.h \
+    view/mainwindow.h \
+    view/paintscene.h
 
 FORMS += \
-    dialogQuestion.ui \
-    learninggraph.ui \
-    mainwindow.ui
+    view/ui/dialogQuestion.ui \
+    view/ui/learninggraph.ui \
+    view/ui/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -42,3 +42,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     icons.qrc
+
+DISTFILES += \
+    img/+.png \
+    img/-.png

@@ -3,8 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
-#include <stdexcept>
 #include <iostream>
+#include <stdexcept>
 
 namespace s21_network {
 
@@ -148,11 +148,11 @@ void GraphNetwork::set_expected_values(const std::vector<float>& val) {
 }
 
 void GraphNetwork::set_learning_rate(float src) {
-  if (src > 0)
-    learning_rate_ = src;
+  if (src > 0) learning_rate_ = src;
 }
 
-void GraphNetwork::EducateOneStep(const std::vector<float>& src, int expectation) {
+void GraphNetwork::EducateOneStep(const std::vector<float>& src,
+                                  int expectation) {
   if (!is_set_up()) throw std::out_of_range("network not set up");
 
   Feed(src);
@@ -176,7 +176,7 @@ void GraphNetwork::Feed(const std::vector<float>& src) {
 }
 
 void GraphNetwork::Execute() {
-  for (auto &i : hidden_layer_) {
+  for (auto& i : hidden_layer_) {
     for (auto j : i) j->Activate();
   }
   for (auto i : output_layer_) i->Activate();
@@ -252,7 +252,8 @@ void GraphNetwork::LoadWeights(const std::string& filename) {
     std::getline(stream, type_network);
     if (type_network == "Weights Network") {
       std::getline(stream, type_network);
-      if (type_network == (std::to_string(get_hid_depth()) + " Hiddens Layers")) {
+      if (type_network ==
+          (std::to_string(get_hid_depth()) + " Hiddens Layers")) {
         int index_layer{};
         while (!stream.eof()) {
           std::getline(stream, line);
@@ -265,12 +266,14 @@ void GraphNetwork::LoadWeights(const std::string& filename) {
           size_t line_size = line.size();
           for (size_t i{}; i < line_size; ++i) {
             if (line[i] == ' ') {
-              get_neuron(index_layer, index_col)->weight(index_row) = std::stod(value);
+              get_neuron(index_layer, index_col)->weight(index_row) =
+                  std::stod(value);
               ++index_col;
               value.clear();
             } else if (i == line_size - 1) {
               value.push_back(line[i]);
-              get_neuron(index_layer, index_col)->weight(index_row) = std::stod(value);
+              get_neuron(index_layer, index_col)->weight(index_row) =
+                  std::stod(value);
               index_col = 0;
               value.clear();
             } else {
@@ -304,12 +307,12 @@ void GraphNetwork::InstallRandomWeights() {
   }
 }
 
-size_t GraphNetwork::Prediction(const std::vector<unsigned> &input_values) {
+size_t GraphNetwork::Prediction(const std::vector<unsigned>& input_values) {
   return (size_t)Run(FormFeedVector(input_values)) + 1;
 }
 
-void GraphNetwork::LearnNetwork(const std::vector<unsigned> &input_values,
-      const size_t &expected_value) {
+void GraphNetwork::LearnNetwork(const std::vector<unsigned>& input_values,
+                                const size_t& expected_value) {
   EducateOneStep(FormFeedVector(input_values), (int)(expected_value - 1));
 }
 
@@ -378,18 +381,6 @@ void GraphNetwork::CalcDerivHidden() {
   }
 }
 
-// void GraphNetwork::CalcDerivInput() {
-//   for (int i{}; i < get_inp_width(); i++) {
-//     float sum{};
-//     for (int j{}; j < get_hid_width(); j++) {
-//       sum += get_neuron(0, j)->get_deriv() * weight(0, j, i);
-//     }
-//     float value = input_layer_[i]->get_value();
-//     float deriv = sum * value * (1 - value);
-//     input_layer_[i]->set_deriv(deriv);
-//   }
-// }
-
 Neuron* GraphNetwork::get_neuron(int i, int j) {
   if (i < get_hid_depth())
     return hidden_layer_[i][j];
@@ -411,10 +402,10 @@ std::vector<float> GraphNetwork::FormExpectationVector(int exp) {
   return res;
 }
 
-std::vector<float> GraphNetwork::FormFeedVector(const std::vector<unsigned> &src) {
+std::vector<float> GraphNetwork::FormFeedVector(
+    const std::vector<unsigned>& src) {
   std::vector<float> data{};
-  for (auto i : src)
-    data.push_back(i / 255.0);
+  for (auto i : src) data.push_back(i / 255.0);
   return data;
 }
 
